@@ -13,12 +13,15 @@ To : <input type="text" name="to" [(ngModel)]="sent.to">
   </div> -->
   <table style="width: 100%">
     <tr>
+    <th>id</th>
       <th>Property</th>
       <th>Result</th>
     </tr>
-    <tr *ngFor="let d of data">
+    <tr *ngFor="let d of data;let i=index">
+    <td>{{i}}</td>
       <td>{{d.name}}</td>
-      <td>{{d.data}}</td>
+      <td *ngIf="i<9">{{d.data}}</td>
+      <td *ngIf="i>=9"><span *ngFor="let t of d.data">{{t}}<br></span></td>
     </tr>
   </table>
 </div>
