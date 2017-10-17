@@ -8,13 +8,14 @@ import {AppService} from './app.service';
 })
 export class AppComponent {
  
-sent:any;
-data : any;
+sent:any ={};
+data : any=[];
 constructor(private service:AppService) {}
 send() {
 	this.service.send(this.sent)
 	.subscribe((para) => {
 		this.data = para;
+		console.log(this.data);
 	})
 }
 }

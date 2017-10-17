@@ -4,10 +4,9 @@ import Debug from 'debug';
 import express from 'express';
 import logger from 'morgan';
 import path from 'path';
+import nihit from './routes/nihit';
 // import favicon from 'serve-favicon';
-
 import index from './routes/index';
-
 const app = express();
 const debug = Debug('server:app');
 
@@ -22,9 +21,10 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
-
+let cors = require('cors');
+app.use(cors());
 app.use('/', index);
-
+app.use('/nlp',nihit);
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   const err = new Error('Not Found');

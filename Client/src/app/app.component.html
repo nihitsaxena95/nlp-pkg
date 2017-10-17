@@ -1,10 +1,24 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<textarea rows="10" cols="40" type="text" name="sentence" [(ngModel)]="sent"></textarea>
+<textarea rows="10" cols="40" type="text" name="sentence" [(ngModel)]="sent.message"></textarea>
+<br>
+From : <input type="text" name="name" [(ngModel)]="sent.from">
+<br>
+To : <input type="text" name="to" [(ngModel)]="sent.to">
 <br>
 <button (click)="send()">Send</button>
 <hr>
 <div *ngIf="data">
-  <div *ngFor="let d of data">
-    {{d}}
-  </div>
+  <!-- <div *ngFor="let d of data">
+    {{d.name}} : {{d.data}}
+  </div> -->
+  <table style="width: 100%">
+    <tr>
+      <th>Property</th>
+      <th>Result</th>
+    </tr>
+    <tr *ngFor="let d of data">
+      <td>{{d.name}}</td>
+      <td>{{d.data}}</td>
+    </tr>
+  </table>
 </div>
